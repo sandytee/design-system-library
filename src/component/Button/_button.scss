@@ -1,0 +1,32 @@
+@mixin button-variant($bg-color, $text-color, $border-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: 2px solid $border-color;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+
+$primary-color: #3498db;
+$danger-color: #FF0000;
+$white: #fff;
+
+.primary-button {
+  @include button-variant($primary-color, white, $primary-color);
+}
+
+
+.secondary-button {
+  @include button-variant($white, $primary-color, $primary-color);
+}
+
+.danger-button {
+  @include button-variant($danger-color, white, $danger-color);
+}
+
+.disabled_button {
+  @include button-variant(#ccc, white, #ccc);
+}

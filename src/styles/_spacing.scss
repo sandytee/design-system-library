@@ -1,0 +1,4 @@
+@function setSpacing($spacing) {
+  @return $spacing * 1rem;
+}
+
