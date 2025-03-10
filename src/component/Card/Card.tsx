@@ -1,13 +1,14 @@
 import "./_card.scss";
 import "../Flex/_flex.scss";
+import { Size } from "../../utils";
 
 export type CardProps = {
   children: React.ReactNode;
-  size?: "small" | "medium" | "large";
+  size?: Size;
 };
 
 export const Card = ({ children, size = "medium" }: CardProps) => {
-  const setSize = (size: "small" | "medium" | "large") => {
+  const setSize = (size: Size) => {
     switch (size) {
       case "small":
         return "card-small";

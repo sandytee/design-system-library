@@ -1,12 +1,14 @@
+import { Status } from "../../utils";
 import "./_alert.scss";
+
 type AlertProps = {
   label: string;
   message: string;
-  status: "success" | "info" | "warning" | "error";
+  status: Status;
 };
 
 export const Alert = ({ message, label, status }: AlertProps) => {
-  const setStatus = (type: string) => {
+  const setStatus = (type: Status) => {
     switch (type) {
       case "success":
         return "alert-success";

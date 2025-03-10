@@ -1,10 +1,11 @@
+import { Variation } from "../../utils";
 import "./_button.scss";
 
 type ButtonProps = {
   onClick: () => void;
   text: string;
   disabled?: boolean;
-  variant?: "primary" | "secondary" | "disabled";
+  variant?: Variation;
 };
 
 export const Button = ({
@@ -13,7 +14,7 @@ export const Button = ({
   disabled,
   variant = "primary",
 }: ButtonProps) => {
-  const setVariant = (variant: "primary" | "secondary" | "disabled") => {
+  const setVariant = (variant: Variation) => {
     switch (variant) {
       case "primary":
         return "primary-button";
