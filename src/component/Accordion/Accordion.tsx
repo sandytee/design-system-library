@@ -43,12 +43,27 @@ export const Accordion: React.FC<AccordionProps> = ({
   return (
     <div
       className={`accordion-container ${setSize(size)}`}
-      onClick={handleOnClick}
+      aria-expanded={isOpened}
+      aria-labelledby={`Accordion ${headerText} is ${
+        isOpened ? "open" : "closed"
+      }`}
     >
-      <div>
+      <button
+        onClick={handleOnClick}
+        role="Accordion header and toggle button"
+        id={`accordion-header-${headerText}`}
+        aria-selected={isOpened}
+        tabIndex={0}
+      >
         <h2>{headerText}</h2>
-      </div>
-      <div>{isOpened ? children : <></>}</div>
+      </button>
+      <section
+        role="region"
+        aria-labelledby={`accordion-header-${headerText}`}
+        id={`accordion-section-${headerText}`}
+      >
+        {isOpened ? children : null}
+      </section>
     </div>
   );
 };
