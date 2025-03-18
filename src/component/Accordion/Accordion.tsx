@@ -7,6 +7,7 @@ export type AccordionProps = {
   size?: Size;
   headerText: string;
   open?: boolean;
+  id: string;
 };
 
 export const Accordion: React.FC<AccordionProps> = ({
@@ -15,6 +16,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   size = "medium",
   headerText,
   open = true,
+  id,
 }) => {
   const [isOpened, setToggle] = useState<boolean>(open);
 
@@ -43,7 +45,6 @@ export const Accordion: React.FC<AccordionProps> = ({
   return (
     <div
       className={`accordion-container ${setSize(size)}`}
-      aria-expanded={isOpened}
       aria-labelledby={`Accordion ${headerText} is ${
         isOpened ? "open" : "closed"
       }`}
@@ -51,18 +52,20 @@ export const Accordion: React.FC<AccordionProps> = ({
       <button
         onClick={handleOnClick}
         role="Accordion header and toggle button"
-        id={`accordion-header-${headerText}`}
-        aria-selected={isOpened}
+        id={`accordion-header-${id}`}
+        aria-controls={`accordion-panel-${id}`}
         tabIndex={0}
+        aria-expanded={isOpened}
       >
-        <h2>{headerText}</h2>
+        <p>{headerText}</p>
       </button>
       <section
+        hidden={!isOpened}
         role="region"
-        aria-labelledby={`accordion-header-${headerText}`}
-        id={`accordion-section-${headerText}`}
+        aria-labelledby={`accordion-header-${id}`}
+        id={`accordion-panel-${id}`}
       >
-        {isOpened ? children : null}
+        {children}
       </section>
     </div>
   );

@@ -7,8 +7,9 @@ import { Section } from "./component/Section/Section";
 import { Alert } from "./component/Alerts/Alert";
 import { Accordion } from "./component/Accordion/Accordion";
 import { useState } from "react";
+import { ToDoFeature } from "./features/ToDo/ToDo";
 
-const App = () => {
+const ComponentApp = () => {
   const [accordionToggle, setAccordionToggle] = useState<boolean>(true);
 
   const handleAccordionToggle = () => {
@@ -76,6 +77,7 @@ const App = () => {
           size="small"
           headerText="Accordion Small"
           open={accordionToggle}
+          id={"small-id"}
         >
           <p>Hello I'm an SMALL accordion</p>
         </Accordion>
@@ -83,6 +85,7 @@ const App = () => {
           size="medium"
           headerText="Accordion Medium"
           open={accordionToggle}
+          id={"medium-id"}
         >
           <p>Hello I'm an MEDIUM accordion</p>
         </Accordion>
@@ -90,10 +93,19 @@ const App = () => {
           size="large"
           headerText="Accordion Large"
           open={accordionToggle}
+          id={"large-id"}
         >
           <p>Hello I'm a LARGE accordion</p>
         </Accordion>
       </Section>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="App">
+      <ToDoFeature />
     </div>
   );
 };
